@@ -23,10 +23,8 @@ const handleError = fn => (...params) =>
   });
 
 export const api = {
-    getAllEvents: handleError(async () => {
-        console.log('hi')
-        const res = await axios.get(baseURL+'/events');
-        console.log(res.data);
-        return res.data;
-      }),
+  getAllEvents: handleError(async () => {
+    const res = await axios.get(baseURL+'/events');
+    return res.data;
+  }),
 };

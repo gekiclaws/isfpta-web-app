@@ -20,36 +20,31 @@
     data() {
       return {
         events: [
-        {
-          key: 1,
-          title: "An event title",
-          postDate: "2020-5-13",
-          eventDate: "2020-5-20",
-          body: "Title description",
-        },
-        {
-          key: 2,
-          title: "An event title 2",
-          postDate: "2020-5-13",
-          eventDate: "2020-5-20",
-          body: "Title description",
-        },
-        {
-          key: 3,
-          title: "An event title 3",
-          postDate: "2020-5-13",
-          eventDate: "2020-5-20",
-          body: "Title description",
-        }
+          {
+            key: 1,
+            title: "An event title",
+            postDate: "2020-5-13",
+            eventDate: "2020-5-20",
+            body: "Title description",
+          },
+          {
+            key: 2,
+            title: "An event title 2",
+            postDate: "2020-5-13",
+            eventDate: "2020-5-20",
+            body: "Title description",
+          },
+          {
+            key: 3,
+            title: "An event title 3",
+            postDate: "2020-5-13",
+            eventDate: "2020-5-20",
+            body: "Title description",
+          }
         ]
       };
     },
     methods: {
-      async mounted() {
-        console.log(this.events);
-        this.events = await api.getAllEvents();
-        console.log(this.events);
-      }
       // async onDestroy(id) {
       //   const sure = window.confirm('Are you sure?');
       //   if (!sure) return;
@@ -58,6 +53,9 @@
       //   const newtasks = this.tasks.filter(task => task._id !== id);
       //   this.tasks = newtasks;
       // },
+    },
+    async mounted() {
+      this.events = await api.getAllEvents();
     }
   }
 </script>
