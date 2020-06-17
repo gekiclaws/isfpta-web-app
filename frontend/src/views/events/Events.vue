@@ -1,6 +1,8 @@
 <template>
   <div>
-    <h1>Events</h1>
+    <br><h1>Events</h1>
+    <b-button size="lg" variant="primary" to="/events/new">Add new event</b-button>
+    <br><br>
     <div><b-card-group deck>  
       <b-card :title="event.title" :sub-title="event.postDate" v-for="(event, i) in events" :key="i">
         <b-card-text>{{event.body}}</b-card-text>
