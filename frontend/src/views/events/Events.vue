@@ -19,29 +19,7 @@
     name: 'Events',
     data() {
       return {
-        events: [
-          {
-            key: 1,
-            title: "An event title",
-            postDate: "2020-5-13",
-            eventDate: "2020-5-20",
-            body: "Title description",
-          },
-          {
-            key: 2,
-            title: "An event title 2",
-            postDate: "2020-5-13",
-            eventDate: "2020-5-20",
-            body: "Title description",
-          },
-          {
-            key: 3,
-            title: "An event title 3",
-            postDate: "2020-5-13",
-            eventDate: "2020-5-20",
-            body: "Title description",
-          }
-        ]
+        events: []
       };
     },
     methods: {
