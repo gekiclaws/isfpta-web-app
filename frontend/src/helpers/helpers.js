@@ -12,4 +12,17 @@ export const api = {
     const res = await axios.get(baseURL+'/events');
     return res.data;
   }),
+  createEvent: handleError(async payload => {
+    const res = await axios.post(baseURL+'/events', payload);
+    return res.data;
+  }),
+  getEvent: handleError(async id => {
+    const res = await axios.get(baseURL + '/events/' + id);
+    return res.data;
+  }),
+  deleteEvent: handleError(async id => {
+    const res = await axios.delete(baseURL + '/events/' + id);
+    return res.data;
+  }),
 };
+
