@@ -1,6 +1,5 @@
-
 # To start mongod
-./mongodb/bin/mongod --dbpath /Users/gekiclaws/Desktop/Coding/Vue-MongoDB/web-app/database
+/mongo/bin/mongod --dbpath ~/Job/KodingKingdom/Matthew/web-app/database
 
 # To start mongo
-./mongodb/bin/mongo
+/mongo/bin/mongo

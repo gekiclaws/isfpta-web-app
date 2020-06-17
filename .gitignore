@@ -9,3 +9,4 @@ frontend/package-lock.json
 #others
 database
 *.DS_Store
+commands.txt
