@@ -8,8 +8,6 @@
         <b-card :title="event.title" :sub-title="Intl.DateTimeFormat('en-GB').format(event.postDate)">
           <b-card-text>{{event.body}}</b-card-text>
           <b-card-text>{{event.eventDate}}</b-card-text>
-          <!-- <a href="#" class="card-link">Card link</a>
-          <b-link href="#" class="card-link">Another link</b-link> -->
         </b-card>
       </router-link>
    </b-card-group></div>
@@ -27,14 +25,6 @@
       };
     },
     methods: {
-      // async onDestroy(id) {
-      //   const sure = window.confirm('Are you sure?');
-      //   if (!sure) return;
-      //   await api.deletetask(id);
-      //   this.flash('task deleted sucessfully!', 'success');
-      //   const newtasks = this.tasks.filter(task => task._id !== id);
-      //   this.tasks = newtasks;
-      // },
     },
     async mounted() {
       this.events = await api.getAllEvents();

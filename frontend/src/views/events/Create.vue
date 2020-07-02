@@ -88,8 +88,9 @@
     },
     methods: {
       async onSubmit() {
-        // var currentDate = new Date();
+        //this.event.postDate = currentDate.getFullYear() + '-' + (currentDate.getMonth() < 12 ? currentDate.getMonth() + 1 : 1) + '-' + currentDate.getDate();
         await api.createEvent(this.event);
+        console.log(event.eventDate);
         this.$router.push('/events');
       },
       onReset() {
