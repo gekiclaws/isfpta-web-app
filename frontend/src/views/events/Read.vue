@@ -11,6 +11,8 @@
 
 <script>
 import { api } from '@/helpers/helpers';
+const dateFormat = require('dateformat');
+
 export default {
     name: 'Read',
     data() {
@@ -28,6 +30,7 @@ export default {
     },
     async mounted() {
       this.event = await api.getEvent(this.$route.params.id);
+      console.log(dateFormat(this.event.postDate, "longTime"));
       this.event.postDate = new Intl.DateTimeFormat('en-GB').format(event.postDate);
       this.event.eventDate = new Intl.DateTimeFormat('en-GB').format(event.eventDate);
     }

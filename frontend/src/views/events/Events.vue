@@ -5,7 +5,7 @@
     <br><br>
     <div><b-card-group deck>  
       <router-link :to="{ name: 'event-read', params: { id: event._id }}" v-for="(event, i) in events" :key="i">
-        <b-card :title="event.title" :sub-title="Intl.DateTimeFormat('en-GB').format(event.postDate)">
+        <b-card :title="event.title" :sub-title="event.postDate">
           <b-card-text>{{event.body}}</b-card-text>
           <b-card-text>{{event.eventDate}}</b-card-text>
         </b-card>
