@@ -74,8 +74,8 @@
             default: () => {
                 return {
                   title: "",
-                  postDate: "",
-                  eventDate: "",
+                  postDate: new Date(),
+                  eventDate: new Date(),
                   body: ""
                 };
             }
@@ -88,9 +88,9 @@
     },
     methods: {
       async onSubmit() {
-        var currentDate = new Date();
-        this.event.postDate = currentDate.getFullYear() + '-' + (currentDate.getMonth() < 12 ? currentDate.getMonth() + 1 : 1) + '-' + currentDate.getDate();
+        //this.event.postDate = currentDate.getFullYear() + '-' + (currentDate.getMonth() < 12 ? currentDate.getMonth() + 1 : 1) + '-' + currentDate.getDate();
         await api.createEvent(this.event);
+        console.log(event.eventDate);
         this.$router.push('/events');
       },
       onReset() {

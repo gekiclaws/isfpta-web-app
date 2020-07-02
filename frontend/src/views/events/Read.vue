@@ -1,7 +1,7 @@
 <template>
   <div>
       <br><h2>{{event.title}}</h2>
-      <p>{{event.postDate}}</p>
+      <p>{{(event.postDate)}}</p>
       <p>{{event.eventDate}}</p>
       <p>{{event.body}}</p>
       <b-button variant="outline-primary">Edit event</b-button>
@@ -28,6 +28,7 @@ export default {
     },
     async mounted() {
       this.event = await api.getEvent(this.$route.params.id);
+      this.event.postDate = new Intl.DateTimeFormat('en-GB').format(event.postDate);
     }
 }
 </script>
