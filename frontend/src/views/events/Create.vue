@@ -25,16 +25,22 @@
           label-for="date"
           description="What is the date of the event?"
           >
-            <!-- <b-form-input
-              id="date"
-              v-model="event.eventDate"
-              type="date"
-              required
-            ></b-form-input> -->
             <b-form-datepicker
               id="date"
               v-model="event.eventDate"
             ></b-form-datepicker>
+          </b-form-group>
+
+          <b-form-group
+          id="time-group"
+          label="Event time:"
+          label-for="time"
+          description="What is the time of the event?"
+          >
+            <b-form-timepicker
+              id="time"
+              v-model="eventTime"
+            ></b-form-timepicker>
           </b-form-group>
 
           <b-form-group
@@ -74,11 +80,15 @@
             default: () => {
                 return {
                   title: "",
-                  postDate: new Date(),
+                  postDate: "",
                   eventDate: new Date(),
                   body: ""
                 };
             }
+        },
+        eventTime:{
+            type: String,
+            required: true,  
         }    
     },
     data() {
@@ -88,9 +98,13 @@
     },
     methods: {
       async onSubmit() {
-        //this.event.postDate = currentDate.getFullYear() + '-' + (currentDate.getMonth() < 12 ? currentDate.getMonth() + 1 : 1) + '-' + currentDate.getDate();
+        this.event.postDate = new Date();
+
+        var list = this.eventTime.split(":")
+        var ms = ((list[0]*60+parseInt(list[1]))*60+parseInt(list[2]))*1000 + this.event.postDate.getTimezoneOffset()*60*1000
+        this.event.eventDate = (new Date(this.event.eventDate)).getTime() + ms;
+
         await api.createEvent(this.event);
-        console.log(event.eventDate);
         this.$router.push('/events');
       },
       onReset() {
@@ -98,11 +112,6 @@
         this.event.title = ''
         this.event.eventDate = ''
         this.event.body = ''
-        // Trick to reset/clear native browser form validation state
-        // this.show = false
-        // this.$nextTick(() => {
-        //   this.show = true
-        // })
       }
     },
     async mounted() {

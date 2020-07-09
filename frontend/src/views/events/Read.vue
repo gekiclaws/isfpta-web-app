@@ -30,9 +30,9 @@ export default {
     },
     async mounted() {
       this.event = await api.getEvent(this.$route.params.id);
-      console.log(dateFormat(this.event.postDate, "longTime"));
-      this.event.postDate = new Intl.DateTimeFormat('en-GB').format(event.postDate);
-      this.event.eventDate = new Intl.DateTimeFormat('en-GB').format(event.eventDate);
+      // console.log(dateFormat(this.event.postDate, "longTime"));
+      this.event.postDate = dateFormat(this.event.postDate, "mmmm dS, yyyy, h:MM:ss TT Z");
+      this.event.eventDate = dateFormat(this.event.eventDate, "mmmm dS, yyyy, h:MM:ss TT Z");
     }
 }
 </script>
