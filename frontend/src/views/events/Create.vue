@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container">
     <br><h1>Create Event</h1>
     <div>
       <div>
@@ -59,8 +59,8 @@
             ></b-form-textarea>
           </b-form-group>
 
-        <b-button type="submit" variant="primary">Submit</b-button>
-        <b-button type="reset" variant="danger">Reset</b-button>
+        <b-button type="submit" variant="primary" class="mx-2">Submit</b-button>
+        <b-button type="reset" variant="danger" class="mx-2">Reset</b-button>
 
         </b-form>
       </div>
@@ -113,9 +113,6 @@
         this.event.eventDate = ''
         this.event.body = ''
       }
-    },
-    async mounted() {
-      this.events = await api.getAllEvents();
     }
   }
 </script>

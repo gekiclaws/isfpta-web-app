@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="mx-5">
     <br><h1>Events</h1>
     <b-button size="lg" variant="primary" to="/events/new">Add new event</b-button>
     <br><br>
