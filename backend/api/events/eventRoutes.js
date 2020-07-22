@@ -10,6 +10,6 @@ router.route('')
 router.route('/:eventId')
     .get(eventBuilder.readEvent)
     .delete(eventBuilder.deleteEvent)
-    .put(eventBuilder.updateEvent);
+    .post(eventBuilder.updateEvent);
 
 module.exports = router;

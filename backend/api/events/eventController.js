@@ -28,6 +28,7 @@ function listAllEvents(req, res) {
 
 // Update
 function updateEvent(req, res){
+    console.log(req.body);
     event.findOneAndUpdate(
         { _id: req.params.eventId },
         req.body,
@@ -44,7 +45,7 @@ function deleteEvent(req, res){
     event.deleteOne({ _id: req.params.eventId }, err => {
         if (err) res.send(err);
         res.json({
-          message: 'task successfully deleted',
+          message: 'event successfully deleted',
          _id: req.params.eventId
         });
       });

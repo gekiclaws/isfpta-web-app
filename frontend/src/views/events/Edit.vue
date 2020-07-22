@@ -104,7 +104,7 @@
         var ms = ((list[0]*60+parseInt(list[1]))*60+parseInt(list[2]))*1000 + this.event.postDate.getTimezoneOffset()*60*1000
         this.event.eventDate = (new Date(this.event.eventDate)).getTime() + ms;
 
-        await api.createEvent(this.event);
+        await api.updateEvent(this.event);
         this.$router.push('/events');
       },
       onReset() {

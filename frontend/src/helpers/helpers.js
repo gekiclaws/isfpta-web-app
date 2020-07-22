@@ -16,6 +16,10 @@ export const api = {
     const res = await axios.post(baseURL+'/events', payload);
     return res.data;
   }),
+  updateEvent: handleError(async id =>{
+    const res = await axios.post(baseURL + '/events/' + id, payload);
+    return res.data;
+  }),
   getEvent: handleError(async id => {
     const res = await axios.get(baseURL + '/events/' + id);
     return res.data;
