@@ -1,13 +1,13 @@
 <template>
   <div class="container">
-    <br><h1>Events</h1>
-    <b-button size="lg" variant="primary" to="/events/create">Add new event</b-button>
+    <br><h1>Community Service</h1>
+    <b-button size="lg" variant="primary" to="/service/create">Add new service opportunity</b-button>
     <br><br>
-    <b-card-group class="d-flex flex-wrap justify-content-center" deck>  
+    <!-- <b-card-group class="d-flex flex-wrap justify-content-center" deck>  
       <router-link :to="{ name: 'event-read', params: { id: event._id }}" v-for="(event, i) in events" :key="i">
         <b-card class="mb-3" :title="event.title" :sub-title="'Posted '+changeDate(event.postDate)"></b-card>
       </router-link>
-    </b-card-group>
+    </b-card-group> -->
   </div>
 </template>
 

@@ -7,6 +7,9 @@ const bodyParser = require('body-parser');
 global.Event = require('./api/events/eventModel');
 const eventRoutes = require('./api/events/eventRoutes');
 
+global.News = require('./api/news/newsModel');
+const newsRoutes = require('./api/news/newsRoutes');
+
 mongoose.Promise = global.Promise;
 mongoose.set('useUnifiedTopology', true);
 mongoose.connect(
@@ -22,6 +25,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 app.use('/events', eventRoutes);
+app.use('/news', newsRoutes);
 app.listen(port);
 
 app.use((req, res) => {

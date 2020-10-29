@@ -1,11 +1,17 @@
 <template>
-  <div>
+  <div class="container text-left">
       <br><h2>{{event.title}}</h2>
-      <p>post date - {{event.postDate}}</p>
-      <p>event date - {{event.eventDate}}</p>
+      <p>Posted {{event.postDate}}</p>
+      <p>Event date | {{event.eventDate}}</p>
       <p>{{event.body}}</p>
-      <b-button :to="{ name: 'event-edit', params: { id: event._id }}" variant="outline-primary">Edit event</b-button>
-      <b-button variant="danger" @click.prevent="onDelete(event._id)">Delete event</b-button>
+      <p>Venue | {{event.venue}}</p>
+      <p>Time | {{event.startTime.substring(0,5)}} to {{event.endTime.substring(0,5)}}</p>
+      <p>Language | {{event.language}}</p>
+      <p>Fees | {{event.fees}}</p>
+      <p>Speaker | {{event.speaker}}</p>
+      <p>{{event.speakerBlurb}}</p>
+      <b-button :to="{ name: 'event-edit', params: { id: event._id }}" variant="outline-primary" class="mx-2">Edit event</b-button>
+      <b-button variant="danger" @click.prevent="onDelete(event._id)" class="mx-2">Delete event</b-button>
   </div>
 </template>
 
@@ -30,8 +36,8 @@ export default {
     },
     async mounted() {
       this.event = await api.getEvent(this.$route.params.id);
-      this.event.postDate = dateFormat(this.event.postDate, "mmmm dS, yyyy, h:MM:ss TT Z");
-      this.event.eventDate = dateFormat(this.event.eventDate, "mmmm dS, yyyy, h:MM:ss TT Z");
+      this.event.postDate = dateFormat(this.event.postDate, "mmmm dS, yyyy");
+      this.event.eventDate = dateFormat(new Date(this.event.eventDate), "mmmm dS, yyyy");
     }
 }
 </script>

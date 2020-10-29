@@ -22,13 +22,11 @@ function listAllEvents(req, res) {
     event.find({}, (err, events) => {
         if (err) res.send(err);
         res.json(events);
-        console.log(events)
     });
 }
 
 // Update
 function updateEvent(req, res){
-    console.log(req.body);
     event.findOneAndUpdate(
         { _id: req.params.eventId },
         req.body,

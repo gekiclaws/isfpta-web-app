@@ -2,31 +2,110 @@ import axios from 'axios';
 
 const baseURL = 'http://localhost:3000';
 
-const handleError = fn => (...params) =>
-  fn(...params).catch(error => {
-    console.log(`${error.response.status}: ${error.response.statusText}`, 'error');
-  });
+// const handleError = fn => (...params) =>
+//   fn(...params).catch(error => {
+//     console.log(`${error.response.status}: ${error.response.statusText}`, 'error');
+//   });
 
 export const api = {
-  getAllEvents: handleError(async () => {
-    const res = await axios.get(baseURL+'/events');
-    return res.data;
+  getAllEvents: (async function() {
+    try {
+      const res = await axios.get(baseURL + '/events');
+      return res.data;
+    }
+    catch (error) {
+      console.log(`${error.response.status}: ${error.response.statusText}`, 'error');
+    }
   }),
-  createEvent: handleError(async payload => {
-    const res = await axios.post(baseURL+'/events', payload);
-    return res.data;
+
+  createEvent: (async function(payload) {
+    try {
+      const res = await axios.post(baseURL + '/events', payload);
+      return res.data;
+    }
+    catch (error) {
+      console.log(`${error.response.status}: ${error.response.statusText}`, 'error');
+    }
   }),
-  updateEvent: handleError(async id =>{
-    const res = await axios.post(baseURL + '/events/' + id, payload);
-    return res.data;
+
+  updateEvent: (async function(id, payload) {
+    try {
+      const res = await axios.post(baseURL + '/events/' + id, payload);
+      return res.data;
+    }
+    catch (error) {
+      console.log(`${error.response.status}: ${error.response.statusText}`, 'error');
+    }
   }),
-  getEvent: handleError(async id => {
-    const res = await axios.get(baseURL + '/events/' + id);
-    return res.data;
+  
+  getEvent: (async function(id) {
+    try {
+      const res = await axios.get(baseURL + '/events/' + id);
+      return res.data;
+    }
+    catch (error) {
+      console.log(`${error.response.status}: ${error.response.statusText}`, 'error');
+    }
   }),
-  deleteEvent: handleError(async id => {
-    const res = await axios.delete(baseURL + '/events/' + id);
-    return res.data;
+ 
+  deleteEvent: (async function(id) {
+    try {
+      const res = await axios.delete(baseURL + '/events/' + id);
+      return res.data;
+    }
+    catch (error) {
+      console.log(`${error.response.status}: ${error.response.statusText}`, 'error');
+    }
+  }),
+
+  getAllNews: (async function() {
+    try {
+      const res = await axios.get(baseURL + '/news');
+      return res.data;
+    }
+    catch (error) {
+      console.log(`${error.response.status}: ${error.response.statusText}`, 'error');
+    }
+  }),
+  
+  createNews: (async function(payload) {
+    try {
+      const res = await axios.post(baseURL + '/news', payload);
+      return res.data;
+    }
+    catch (error) {
+      console.log(`${error.response.status}: ${error.response.statusText}`, 'error');
+    }
+  }),
+
+  updateNews: (async function(id, payload) {
+    try {
+      const res = await axios.post(baseURL + '/news/' + id, payload);
+      return res.data;
+    }
+    catch (error) {
+      console.log(`${error.response.status}: ${error.response.statusText}`, 'error');
+    }
+  }),
+  
+  getNews: (async function(id) {
+    try {
+      const res = await axios.get(baseURL + '/news/' + id);
+      return res.data;
+    }
+    catch (error) {
+      console.log(`${error.response.status}: ${error.response.statusText}`, 'error');
+    }
+  }),
+
+  deleteNews: (async function(id) {
+    try {
+      const res = await axios.delete(baseURL + '/news/' + id);
+      return res.data;
+    }
+    catch (error) {
+      console.log(`${error.response.status}: ${error.response.statusText}`, 'error');
+    }
   }),
 };
 

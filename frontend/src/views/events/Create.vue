@@ -20,6 +20,21 @@
           </b-form-group>
 
           <b-form-group
+          id="body-group"
+          label="Event description: (optional)"
+          label-for="body"
+          description="Provide a description for the event."
+          >
+            <b-form-textarea
+              id="body"
+              v-model="event.body"
+              placeholder="Enter event description"
+              rows="4"
+              no-resize
+            ></b-form-textarea>
+          </b-form-group>
+
+          <b-form-group
           id="date-group"
           label="Event date:"
           label-for="date"
@@ -33,29 +48,99 @@
 
           <b-form-group
           id="time-group"
-          label="Event time:"
-          label-for="time"
-          description="What is the time of the event?"
+          label="Event start:"
+          label-for="startTime"
+          description="What is the start time of the event?"
           >
             <b-form-timepicker
-              id="time"
-              v-model="eventTime"
+              id="startTime"
+              v-model="event.startTime"
             ></b-form-timepicker>
           </b-form-group>
 
           <b-form-group
-          id="body-group"
-          label="Event body:"
-          label-for="body"
-          description="Provide a description for the event."
+          id="time-group"
+          label="Event end:"
+          label-for="endTime"
+          description="What is the end time of the event?"
+          >
+            <b-form-timepicker
+              id="endTime"
+              v-model="event.endTime"
+            ></b-form-timepicker>
+          </b-form-group>
+
+          <b-form-group
+          id="title-group"
+          label="Venue:"
+          label-for="venue"
+          description="What is the event venue?"
           >
             <b-form-textarea
-              id="body"
-              v-model="event.body"
-              placeholder="Enter event description"
-              rows="4"
-              no-resize
+              id="venue"
+              v-model="event.venue"
+              type="text"
               required
+              placeholder="Enter event venue"
+            ></b-form-textarea>
+          </b-form-group>
+
+          <b-form-group
+          id="title-group"
+          label="Language:"
+          label-for="language"
+          description="What language will be spoken in the event?"
+          >
+            <b-form-textarea
+              id="language"
+              v-model="event.language"
+              type="text"
+              required
+              placeholder="Enter event language"
+            ></b-form-textarea>
+          </b-form-group>
+
+          <b-form-group
+          id="body-group"
+          label="Fees:"
+          label-for="fees"
+          description="What are the fees for the event?"
+          >
+            <b-form-textarea
+              id="fees"
+              v-model="event.fees"
+              type="text"
+              required
+              placeholder="Enter event fees"
+            ></b-form-textarea>
+          </b-form-group>
+
+          <b-form-group
+          id="title-group"
+          label="Speaker:"
+          label-for="speaker"
+          description="Who is the speaker for the event?"
+          >
+            <b-form-textarea
+              id="speaker"
+              v-model="event.speaker"
+              type="text"
+              required
+              placeholder="Enter event speaker"
+            ></b-form-textarea>
+          </b-form-group>
+
+          <b-form-group
+          id="body-group"
+          label="Speaker introduction:"
+          label-for="speakerBlurb"
+          description="Any introduction for the speaker?"
+          >
+            <b-form-textarea
+              id="speakerBlurb"
+              v-model="event.speakerBlurb"
+              type="text"
+              placeholder="Enter event speaker introduction"
             ></b-form-textarea>
           </b-form-group>
 
@@ -80,16 +165,19 @@
             default: () => {
                 return {
                   title: "",
+                  body: "",
                   postDate: "",
                   eventDate: new Date(),
-                  body: ""
+                  startTime: "",
+                  endTime: "",
+                  venue: "",
+                  language: "",
+                  fees: "",
+                  speaker: "",
+                  speakerBlurb: ""
                 };
             }
-        },
-        eventTime:{
-            type: String,
-            required: true,  
-        }    
+        }  
     },
     data() {
       return {
@@ -99,11 +187,6 @@
     methods: {
       async onSubmit() {
         this.event.postDate = new Date();
-
-        var list = this.eventTime.split(":")
-        var ms = ((list[0]*60+parseInt(list[1]))*60+parseInt(list[2]))*1000 + this.event.postDate.getTimezoneOffset()*60*1000
-        this.event.eventDate = (new Date(this.event.eventDate)).getTime() + ms;
-
         await api.createEvent(this.event);
         this.$router.push('/events');
       },
@@ -112,6 +195,13 @@
         this.event.title = ''
         this.event.eventDate = ''
         this.event.body = ''
+        this.event.startTime = ''
+        this.event.endTime = ''
+        this.event.venue = ''
+        this.event.language = ''
+        this.event.fees = ''
+        this.event.speaker = ''
+        this.event.speakerBlurb = ''
       }
     }
   }
