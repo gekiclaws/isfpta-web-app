@@ -1,7 +1,7 @@
 <template>
   <div class="mx-5">
     <br><h1>PTA News Items</h1>
-    <b-button size="lg" variant="primary" to="/news/create">New post</b-button>
+    <b-button size="lg" variant="primary" to="/pta-network-news/create">New post</b-button>
     <br><br>
     <b-card-group class="d-flex flex-wrap justify-content-center" deck>  
       <router-link :to="{ name: 'news-read', params: { id: news._id }}" v-for="(news, i) in newsList" :key="i">

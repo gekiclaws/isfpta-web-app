@@ -1,15 +1,15 @@
-const newsBuilder = require('./newsController.js');
+const serviceBuilder = require('./serviceController.js');
 const express = require('express');
 
 var router = express.Router();
 
 router.route('')
-    .get(newsBuilder.listAllNews)
-    .post(newsBuilder.createNews);
+    .get(serviceBuilder.listAllService)
+    .post(serviceBuilder.createService);
 
-router.route('/:newsId')
-    .get(newsBuilder.readNews)
-    .delete(newsBuilder.deleteNews)
-    .post(newsBuilder.updateNews);
+router.route('/:serviceId')
+    .get(serviceBuilder.readService)
+    .delete(serviceBuilder.deleteService)
+    .post(serviceBuilder.updateService);
 
 module.exports = router;

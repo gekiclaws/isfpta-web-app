@@ -1,18 +1,18 @@
 <template>
   <div class="container">
-    <br><h1>Publish News</h1>
+    <br><h1>Publish Service Opportunity</h1>
     <div>
       <div>
         <b-form @submit.prevent="onSubmit" @reset.prevent="onReset">
           <b-form-group
           id="title-group"
-          label="News title:"
+          label="Opportunity title:"
           label-for="title"
-          description="What is the title of your article?"
+          description="What is the title of the service opportunity?"
           >
             <b-form-input
               id="title"
-              v-model="news.title"
+              v-model="service.title"
               type="text"
               required
               placeholder="Enter title"
@@ -20,29 +20,15 @@
           </b-form-group>
 
           <b-form-group
-          id="author-group"
-          label="Author:"
-          label-for="author"
-          >
-            <b-form-input
-              id="author"
-              v-model="news.author"
-              type="text"
-              required
-              placeholder="Enter author name"
-            ></b-form-input>
-          </b-form-group>
-
-          <b-form-group
-          id="body-group"
-          label="News body:"
-          label-for="body"
-          description="Write the body of your news article here."
+          id="info-group"
+          label="Opportunity information:"
+          label-for="info"
+          description="Input details of the service opportunity"
           >
             <b-form-textarea
-              id="body"
-              v-model="news.body"
-              placeholder="Enter news body"
+              id="info"
+              v-model="service.info"
+              placeholder="Enter details here"
               rows="4"
               no-resize
               required
@@ -62,32 +48,30 @@
   import { api } from '@/helpers/helpers';
 
   export default {
-    name: 'newNews',
+    name: 'newService',
     props: {
-        news: {
+        service: {
             type: Object,
             required: false,
             default: () => {
                 return {
                   title: "",
-                  author: "",
                   postDate: new Date(),
-                  body: ""
+                  info: ""
                 };
             }
         }   
     },
     methods: {
       async onSubmit() {
-        this.news.postDate = new Date();
-        await api.createNews(this.news);
-        this.$router.push('/pta-network-news');
+        this.service.postDate = new Date();
+        await api.createService(this.service);
+        this.$router.push('/community-service');
       },
       onReset() {
         // Reset our form values
-        this.news.title = ''
-        this.news.author = ''
-        this.news.body = ''
+        this.service.title = ''
+        this.service.info = ''
       }
     }
   }

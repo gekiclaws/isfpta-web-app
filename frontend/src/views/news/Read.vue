@@ -25,7 +25,7 @@ export default {
           const sure = window.confirm('Are you sure?');
           if (!sure) return;
           await api.deleteNews(id);
-          this.$router.push('/news');
+          this.$router.push('/pta-network-news');
       }
     },
     async mounted() {

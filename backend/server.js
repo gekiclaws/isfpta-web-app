@@ -10,6 +10,9 @@ const eventRoutes = require('./api/events/eventRoutes');
 global.News = require('./api/news/newsModel');
 const newsRoutes = require('./api/news/newsRoutes');
 
+global.Service = require('./api/service/serviceModel');
+const serviceRoutes = require('./api/service/serviceRoutes');
+
 mongoose.Promise = global.Promise;
 mongoose.set('useUnifiedTopology', true);
 mongoose.connect(
@@ -25,7 +28,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 app.use('/events', eventRoutes);
-app.use('/news', newsRoutes);
+app.use('/pta-network-news', newsRoutes);
+app.use('/community-service', serviceRoutes);
 app.listen(port);
 
 app.use((req, res) => {

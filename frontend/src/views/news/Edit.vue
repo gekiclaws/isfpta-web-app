@@ -81,7 +81,7 @@
       async onSubmit() {
         this.news.postDate = new Date();
         await api.updateNews(this.$route.params.id, this.news);
-        this.$router.push('/news');
+        this.$router.push('/pta-network-news');
       },
       onReset() {
         // Reset our form values

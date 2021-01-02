@@ -36,6 +36,7 @@ export default {
     },
     async mounted() {
       this.event = await api.getEvent(this.$route.params.id);
+      console.log(this.event);
       this.event.postDate = dateFormat(this.event.postDate, "mmmm dS, yyyy");
       this.event.eventDate = dateFormat(new Date(this.event.eventDate), "mmmm dS, yyyy");
     }

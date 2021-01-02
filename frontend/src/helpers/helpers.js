@@ -60,7 +60,7 @@ export const api = {
 
   getAllNews: (async function() {
     try {
-      const res = await axios.get(baseURL + '/news');
+      const res = await axios.get(baseURL + '/pta-network-news');
       return res.data;
     }
     catch (error) {
@@ -70,7 +70,7 @@ export const api = {
   
   createNews: (async function(payload) {
     try {
-      const res = await axios.post(baseURL + '/news', payload);
+      const res = await axios.post(baseURL + '/pta-network-news', payload);
       return res.data;
     }
     catch (error) {
@@ -80,7 +80,7 @@ export const api = {
 
   updateNews: (async function(id, payload) {
     try {
-      const res = await axios.post(baseURL + '/news/' + id, payload);
+      const res = await axios.post(baseURL + '/pta-network-news/' + id, payload);
       return res.data;
     }
     catch (error) {
@@ -90,7 +90,7 @@ export const api = {
   
   getNews: (async function(id) {
     try {
-      const res = await axios.get(baseURL + '/news/' + id);
+      const res = await axios.get(baseURL + '/pta-network-news/' + id);
       return res.data;
     }
     catch (error) {
@@ -100,7 +100,57 @@ export const api = {
 
   deleteNews: (async function(id) {
     try {
-      const res = await axios.delete(baseURL + '/news/' + id);
+      const res = await axios.delete(baseURL + '/pta-network-news/' + id);
+      return res.data;
+    }
+    catch (error) {
+      console.log(`${error.response.status}: ${error.response.statusText}`, 'error');
+    }
+  }),
+
+  getAllService: (async function() {
+    try {
+      const res = await axios.get(baseURL + '/community-service');
+      return res.data;
+    }
+    catch (error) {
+      console.log(`${error.response.status}: ${error.response.statusText}`, 'error');
+    }
+  }),
+  
+  createService: (async function(payload) {
+    try {
+      const res = await axios.post(baseURL + '/community-service', payload);
+      return res.data;
+    }
+    catch (error) {
+      console.log(`${error.response.status}: ${error.response.statusText}`, 'error');
+    }
+  }),
+
+  updateService: (async function(id, payload) {
+    try {
+      const res = await axios.post(baseURL + '/community-service/' + id, payload);
+      return res.data;
+    }
+    catch (error) {
+      console.log(`${error.response.status}: ${error.response.statusText}`, 'error');
+    }
+  }),
+  
+  getService: (async function(id) {
+    try {
+      const res = await axios.get(baseURL + '/community-service/' + id);
+      return res.data;
+    }
+    catch (error) {
+      console.log(`${error.response.status}: ${error.response.statusText}`, 'error');
+    }
+  }),
+
+  deleteService: (async function(id) {
+    try {
+      const res = await axios.delete(baseURL + '/community-service/' + id);
       return res.data;
     }
     catch (error) {
